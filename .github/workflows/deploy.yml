@@ -16,12 +16,15 @@ jobs:
     env:
       MONGODB_CONNECTION_PROTOCOL: mongodb
       MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017
+      # this will be used when container will be used
+      # MONGODB_CLUSTER_ADDRESS: 127.0.0.1:27017  
       MONGODB_USERNAME: root
       MONGODB_PASSWORD: example
       PORT: 8080
     services:
       mongodb:
         image: mongo
+        # ports are not required when container is used
         ports:
           - 27017:27017
         env:
