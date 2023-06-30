@@ -8,6 +8,7 @@ env:
   MONGODB_DB_NAME: gha-demo
 jobs:
   test:
+    # The below environment contains username and password
     environment: gh-action-test-env
     runs-on: ubuntu-latest
     env:
