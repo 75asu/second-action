@@ -11,6 +11,9 @@ env:
 
 jobs:
   test:
+    # username and password secrets will be pulled from the
+    # gh-action-test-env enviroment secrets
+    environment: gh-action-test-env
     env: 
       MONGODB_CLUSTER_ADDRESS: ${{ secrets.MONGODB_CLUSTER_ADDRESS }}
       MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
@@ -31,7 +34,7 @@ jobs:
         run: npm ci 
 
       - name: Run server
-        run: npm start & npx wait-on http://127.0.0.1:$PORT
+        run: npm start & npx wait-on http://127.0.0.1:${{ secrets.PORT }}
 
       - name: Run tests
         run: npm test
